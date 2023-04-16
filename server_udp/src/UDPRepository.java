@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class UPDRepository {
+public class UDPRepository {
     private List<ClientDto> clientDtoList = getRepo();
 
     List<ClientDto> getAll() {

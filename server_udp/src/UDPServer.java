@@ -4,7 +4,7 @@ import java.util.List;
 
 public class UDPServer{
     public static void main(String args[]) {
-        UPDRepository updRepository = new UPDRepository();
+        UDPRepository UDPRepository = new UDPRepository();
         DatagramSocket aSocket = null;
         try{
             aSocket = new DatagramSocket(6789);
@@ -17,13 +17,13 @@ public class UDPServer{
                 String response = "Request must contain 'all' or accounts number";
 
                 if (requestString.substring(0, 3).equals("all")) {
-                    List<ClientDto> clientDtoList = updRepository.getAll();
+                    List<ClientDto> clientDtoList = UDPRepository.getAll();
                     response = "";
                     for (ClientDto clientDto : clientDtoList) {
                         response += "\n" + clientDto.toString();
                     }
                 } else if (requestString.trim().matches("^[0-9]+")) {
-                    ClientDto clientDto = updRepository.getByAccountNumber(requestString.trim());
+                    ClientDto clientDto = UDPRepository.getByAccountNumber(requestString.trim());
                     if (clientDto != null) {
                         response = clientDto.toString();
                     } else {
